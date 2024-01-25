@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+    "name": "Archive Redirector",
+    "version": "1.0",
+    "description": "Effortlessly bypass paywalls by redirecting to archive.is, ensuring seamless access to valuable content without subscription barriers. Enjoy unrestricted exploration of paywalled websites with this convenient extension. ",
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "<all_urls>",
+        "tabs",
+        "activeTab"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_security_policy": "script-src 'self' https://cdn.tailwindcss.com; object-src 'self'",
+
+    "content_scripts": [
+        {
+            "matches": ["*://archive.is/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/link-16.png",
+            "48": "icons/link-48.png",
+            "128": "icons/link-128.png"
+        }
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+    },
+    "icons": {
+	    "48": "images/icon48.png",
+		"96": "images/icon96.png",
+		"128": "images/icon128.png"
+	}
+}
+
